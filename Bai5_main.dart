@@ -97,5 +97,4 @@ class QLCB {
 void main() {
   QLCB qlcb = QLCB();
   qlcb.menu();
-  print('Hello')
 }
