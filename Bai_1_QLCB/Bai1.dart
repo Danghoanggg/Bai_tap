@@ -11,14 +11,14 @@ import 'dart:io';
 class CanBo {
   String _hoTen = '', _gioiTinh = '', _dChi = '';
   int _tuoi = 0;
-  // CanBo(this._hoTen, this._tuoi, this._gioiTinh, this._dChi);
+  CanBo.khaibao(this._hoTen, this._tuoi, this._gioiTinh, this._dChi);
   CanBo();
   void setTen(String hoTen) {
     this._hoTen = hoTen;
   }
 
   void settuoi(int tuoi) {
-    if (tuoi >= 0) {
+    if (tuoi > 0) {
       this._tuoi = tuoi;
     } else {
       print('Tuoi khong hop le');
@@ -33,22 +33,28 @@ class CanBo {
     this._dChi = dChi;
   }
 
+  String getTen() => this._hoTen;
+  int getTuoi() => this._tuoi;
+  String getgioiTinh() => this._gioiTinh;
+  String getdChi() => this._dChi;
   void nhap() {
     stdout.write('Nhap ho va ten : ');
-    this._hoTen = stdin.readLineSync() ?? '';
+    setTen(stdin.readLineSync() ?? '');
     do {
       stdout.write('Nhap tuoi : ');
-      settuoi(int.parse(stdin.readLineSync() ?? '0'));
+      settuoi(int.tryParse(stdin.readLineSync() ?? '') ?? -1);
     } while (_tuoi <= 0);
 
     stdout.write('Nhap gioi tinh : ');
-    this._gioiTinh = stdin.readLineSync() ?? '';
+    setgTinh(stdin.readLineSync() ?? '');
     stdout.write('Nhap dia chi : ');
-    this._dChi = stdin.readLineSync() ?? '';
+    setdchi(stdin.readLineSync() ?? '');
   }
-}
 
-void main() {
-  CanBo c = CanBo();
-  c.nhap();
+  void hienThi() {
+    print('Ho va ten : ${getTen()}');
+    print('Tuoi : ${getTuoi()}');
+    print('Gioi tinh : ${getgioiTinh()}');
+    print('Dia chi : ${getdChi()}');
+  }
 }
