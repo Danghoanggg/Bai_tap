@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'dart:io';
+
 /*
 a. Xây dựng lớp nhân viên với các thông tin: ma nhân viên, ten nhân viên, hệ so lương,
 phòng ban, số ngày làm việc; Phương thức: Xếp loại, Tính thu nhập, toString lấy các
@@ -10,6 +11,7 @@ loại A, nếu số ngày làm việc >22 loại B, còn lại loại C.
 Lương = 2340 * hệ số lương * hệ số thi đua. Trong đó hệ số thi đua là 1.00; 0.75 và
 0.50 tương ứng với loại thi đua là A, B, C.
 */
+enum XepLoai { A, B, C }
 
 class NhanVien {
   String _maNv = '', _tenNv = '', phongBan = '';
@@ -99,20 +101,22 @@ class NhanVien {
     print('So ngay lam viec : ${this.getsoNgaylam()}');
   }
 
-  void xepLoai() {
-    if (this.getsoNgaylam() > 25) {
-      print('${this.getmaNV()}dat loai A ');
-    } else if ((this.getsoNgaylam() <= 25) && (this.getsoNgaylam() >= 22)) {
-      print('${this.getmaNV()}dat loai B ');
-    } else {
-      print('${this.getmaNV()}dat loai C ');
+  XepLoai xepLoai() {
+    int soNgayLam = this.getsoNgaylam();
+    if (soNgayLam > 25) return XepLoai.A;
+    if (soNgayLam >= 22) return XepLoai.B;
+    return XepLoai.C;
+  }
+
+  double tinhLuong() {
+    double heSoLuong = this.gethesoLuong();
+    switch (xepLoai()) {
+      case XepLoai.A:
+        return 2340 * heSoLuong;
+      case XepLoai.B:
+        return 2340 * heSoLuong * 0.75;
+      case XepLoai.C:
+        return 2340 * heSoLuong * 0.5;
     }
   }
-}
-
-void main() {
-  NhanVien n = NhanVien();
-  n.nhap();
-  n.hienThi();
-  n.xepLoai();
 }
