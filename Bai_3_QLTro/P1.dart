@@ -35,7 +35,7 @@ abstract class phongTro {
   double gettienDien() => this._tienDien;
   double getsoNuoc() => this._soNuoc;
   void setmaPhong(String maPhong) {
-    if ((maPhong.isEmpty) && (maPhong == maPhong)) {
+    if ((maPhong.isEmpty)) {
       print('Vui long nhap ma phong ! ');
     } else {
       this._maPhong = maPhong;

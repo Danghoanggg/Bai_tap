@@ -25,8 +25,7 @@ class phongA extends phongTro {
 
   int getngThan() => this._ngThan;
 
-  void nhap() {
-    super.nhap();
+  void nhap_nguoithan() {
     do {
       stdout.write('Nhap so nguoi than den tham : ');
       setngThan(int.tryParse(stdin.readLineSync() ?? '') ?? 0);
