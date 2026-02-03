@@ -16,8 +16,6 @@ Sắp xếp danh sách phòng thuê theo thứ tự giảm dần của số đi�
 In ra màn hình danh sách các phòng loại A.
 */
 import 'dart:io';
-import 'P2_A.dart';
-import 'P2_B.dart';
 
 abstract class phongTro {
   String _maPhong = '';
@@ -35,6 +33,7 @@ abstract class phongTro {
   double gettienDien() => this._tienDien;
   double getsoNuoc() => this._soNuoc;
   void setmaPhong(String maPhong) {
+    maPhong = maPhong.trim();
     if ((maPhong.isEmpty)) {
       print('Vui long nhap ma phong ! ');
     } else {
