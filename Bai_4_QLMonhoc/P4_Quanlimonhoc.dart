@@ -18,9 +18,7 @@ class QLMH {
   }
 
   void Nhap() {
-    while (true) {
-      Nhap_MotLan();
-    }
+    while (Nhap_MotLan()) {}
   }
 
   void HienThi() {
@@ -45,7 +43,7 @@ class QLMH {
     HienThi();
   }
 
-  void Nhap_MotLan() {
+  bool Nhap_MotLan() {
     print('++++++++++++++++++++++++++++++');
     print('1.Nhap mon hoc li thuyet');
     print('2.Nhap mon hoc thuc hanh');
@@ -65,7 +63,7 @@ class QLMH {
         } while (kiemtraMa(lythuyet.getMaMon()));
         lythuyet.nhap();
         _danhsachMonhoc.add(lythuyet);
-        break;
+        return true;
       case 2:
         Thuchanh thuchanh = Thuchanh();
         do {
@@ -76,7 +74,7 @@ class QLMH {
         } while (kiemtraMa(thuchanh.getMaMon()));
         thuchanh.nhap();
         _danhsachMonhoc.add(thuchanh);
-        break;
+        return true;
       case 3:
         Doan doan = Doan();
         do {
@@ -87,11 +85,13 @@ class QLMH {
         } while (kiemtraMa(doan.getMaMon()));
         doan.nhap();
         _danhsachMonhoc.add(doan);
-        break;
+        return true;
       case 4:
-        return;
+        print('THOAT CHUONG TRINH!');
+        return false;
       default:
         print('Lua chon khong ton tai !');
+        return true;
     }
   }
 
